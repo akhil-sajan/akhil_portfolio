@@ -8,11 +8,11 @@ export function SectionHeading({ eyebrow, title, description }: SectionHeadingPr
   return (
     <div className="mb-12 text-center">
       {eyebrow && (
-        <p className="mb-2 text-sm font-medium tracking-wide text-purple-500 uppercase">
+        <p className="mb-2 text-sm font-medium tracking-widest text-gray-500 uppercase dark:text-gray-400">
           {eyebrow}
         </p>
       )}
-      <h2 className="text-3xl font-semibold text-gray-900 sm:text-4xl dark:text-white">
+      <h2 className="text-3xl font-semibold text-black sm:text-4xl dark:text-white">
         {title}
       </h2>
       {description && (

@@ -9,10 +9,10 @@ const links = [
 
 export function Navbar() {
   return (
-    <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/80 backdrop-blur dark:border-gray-800 dark:bg-gray-950/80">
+    <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/80 backdrop-blur dark:border-gray-800 dark:bg-black/80">
       <Container>
         <nav className="flex h-16 items-center justify-between">
-          <a href="#top" className="text-lg font-semibold text-gray-900 dark:text-white">
+          <a href="#top" className="text-lg font-semibold text-black dark:text-white">
             Your Name
           </a>
           <ul className="flex items-center gap-6">
@@ -20,7 +20,7 @@ export function Navbar() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="text-sm text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+                  className="text-sm text-gray-600 transition-colors hover:text-black dark:text-gray-400 dark:hover:text-white"
                 >
                   {link.label}
                 </a>

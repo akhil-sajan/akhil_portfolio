@@ -1,62 +1,44 @@
+import { monoPlaceholder } from '../../lib/placeholder';
 import { projects } from '../../data/projects';
+import { TiltCard } from '../unlumen-ui/tilt-card';
 import { Container } from '../ui/Container';
 import { SectionHeading } from '../ui/SectionHeading';
 
 export function Projects() {
   return (
-    <section id="projects" className="py-24">
+    <section id="projects" className="flex min-h-[calc(100svh-4rem)] items-center">
       <Container>
         <SectionHeading
           eyebrow="Portfolio"
           title="Projects"
           description="A few things I've built recently."
         />
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project) => (
-            <article
-              key={project.id}
-              className="flex flex-col rounded-2xl border border-gray-200 p-6 transition-shadow hover:shadow-lg dark:border-gray-800"
-            >
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                {project.title}
-              </h3>
-              <p className="mt-2 flex-1 text-sm text-gray-600 dark:text-gray-400">
-                {project.description}
-              </p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full bg-purple-50 px-3 py-1 text-xs font-medium text-purple-600 dark:bg-purple-950/40 dark:text-purple-300"
-                  >
-                    {tag}
-                  </span>
-                ))}
+        <div className="grid gap-8 lg:grid-cols-2">
+          {projects.map((project, i) => {
+            const isLastOdd = projects.length % 2 !== 0 && i === projects.length - 1;
+            return (
+              <div key={project.id} className={isLastOdd ? 'lg:col-span-2' : undefined}>
+                <TiltCard
+                  title={project.title}
+                  description={project.description}
+                  imageSrc={monoPlaceholder(project.tags[0] ?? '', i % 2 === 1)}
+                  imageAlt={`${project.title} preview placeholder`}
+                  href={project.liveUrl ?? project.repoUrl}
+                >
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-700 dark:bg-gray-800 dark:text-gray-300"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </TiltCard>
               </div>
-              <div className="mt-6 flex gap-4 text-sm font-medium">
-                {project.liveUrl && (
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-purple-600 hover:underline dark:text-purple-400"
-                  >
-                    Live demo
-                  </a>
-                )}
-                {project.repoUrl && (
-                  <a
-                    href={project.repoUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-gray-600 hover:underline dark:text-gray-400"
-                  >
-                    Source
-                  </a>
-                )}
-              </div>
-            </article>
-          ))}
+            );
+          })}
         </div>
       </Container>
     </section>

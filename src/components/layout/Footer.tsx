@@ -16,7 +16,7 @@ export function Footer() {
                   href={social.url}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-sm text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+                  className="text-sm text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white"
                 >
                   {social.label}
                 </a>

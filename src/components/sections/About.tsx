@@ -3,7 +3,7 @@ import { SectionHeading } from '../ui/SectionHeading';
 
 export function About() {
   return (
-    <section id="about" className="py-24">
+    <section id="about" className="flex min-h-[calc(100svh-4rem)] items-center">
       <Container>
         <SectionHeading eyebrow="About Me" title="Who I am" />
         <div className="mx-auto max-w-2xl text-center text-gray-600 dark:text-gray-400">

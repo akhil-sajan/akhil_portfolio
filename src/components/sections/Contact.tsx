@@ -5,7 +5,7 @@ import { SectionHeading } from '../ui/SectionHeading';
 
 export function Contact() {
   return (
-    <section id="contact" className="py-24">
+    <section id="contact" className="flex min-h-[calc(100svh-4rem)] items-center">
       <Container>
         <SectionHeading
           eyebrow="Get in touch"
@@ -21,7 +21,7 @@ export function Contact() {
                 href={social.url}
                 target="_blank"
                 rel="noreferrer"
-                className="text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+                className="text-sm font-medium text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white"
               >
                 {social.label}
               </a>

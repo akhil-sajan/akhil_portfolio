@@ -3,17 +3,20 @@ import { Container } from '../ui/Container';
 
 export function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden py-32">
+    <section
+      id="top"
+      className="relative flex min-h-[calc(100svh-4rem)] items-center overflow-hidden"
+    >
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-purple-100 via-white to-white dark:from-purple-950/40 dark:via-gray-950 dark:to-gray-950"
+        className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-gray-100 via-white to-white dark:from-gray-900 dark:via-black dark:to-black"
       />
       <Container>
-        <div className="text-center">
-          <p className="mb-4 text-sm font-medium tracking-wide text-purple-500 uppercase">
+        <div className="relative z-10 text-center">
+          <p className="mb-4 text-sm font-medium tracking-widest text-gray-500 uppercase dark:text-gray-400">
             Hi, I'm Your Name
           </p>
-          <h1 className="text-5xl font-bold tracking-tight text-gray-900 sm:text-7xl dark:text-white">
+          <h1 className="text-5xl font-bold tracking-tight text-black sm:text-7xl dark:text-white">
             I build things
             <br />
             for the web.

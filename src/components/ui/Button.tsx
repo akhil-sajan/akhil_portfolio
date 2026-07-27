@@ -13,9 +13,9 @@ export function Button({
   const base =
     'inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-medium transition-colors';
   const variants = {
-    primary: 'bg-purple-600 text-white hover:bg-purple-700',
+    primary: 'bg-black text-white hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200',
     secondary:
-      'border border-gray-300 text-gray-900 hover:bg-gray-100 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800',
+      'border border-gray-300 text-black hover:bg-gray-100 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800',
   };
 
   return (
