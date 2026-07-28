@@ -1,35 +1,35 @@
-import { Button } from '../ui/Button';
+import { heroStats } from '../../data/hero';
 import { Container } from '../ui/Container';
+import { TwoToneHeading } from '../ui/TwoToneHeading';
+import { ProfileCard } from './ProfileCard';
 
 export function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-[calc(100svh-4rem)] items-center overflow-hidden"
+      className="relative scroll-mt-16 overflow-hidden"
     >
-      <div
-        aria-hidden
-        className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-gray-100 via-white to-white dark:from-gray-900 dark:via-black dark:to-black"
-      />
       <Container>
-        <div className="relative z-10 text-center">
-          <p className="mb-4 text-sm font-medium tracking-widest text-gray-500 uppercase dark:text-gray-400">
-            Hi, I'm Your Name
-          </p>
-          <h1 className="text-5xl font-bold tracking-tight text-black sm:text-7xl dark:text-white">
-            I build things
-            <br />
-            for the web.
-          </h1>
-          <p className="mx-auto mt-6 max-w-xl text-lg text-gray-600 dark:text-gray-400">
-            A short, punchy tagline about what you do and who you help — replace this with
-            your own pitch.
-          </p>
-          <div className="mt-10 flex items-center justify-center gap-4">
-            <Button href="#projects">View my work</Button>
-            <Button href="#contact" variant="secondary">
-              Get in touch
-            </Button>
+        <ProfileCard className="mb-12 md:hidden" />
+
+        <div>
+          <TwoToneHeading
+            top="Software"
+            bottom="Engineer"
+            description="Passionate about creating intuitive and engaging user experiences. Specialize in transforming ideas into beautifully crafted products."
+          />
+
+          <div className="mt-10 flex flex-wrap gap-8">
+            {heroStats.map((stat) => (
+              <div key={stat.label}>
+                <p className="text-5xl font-black text-black sm:text-6xl dark:text-white">
+                  {stat.value}
+                </p>
+                <p className="mt-1 text-sm leading-tight whitespace-pre-line text-gray-500 uppercase">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </Container>

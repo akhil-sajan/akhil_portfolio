@@ -1,12 +1,12 @@
 import { Container } from '../ui/Container';
-import { SectionHeading } from '../ui/SectionHeading';
+import { TwoToneHeading } from '../ui/TwoToneHeading';
 
 export function About() {
   return (
-    <section id="about" className="flex min-h-[calc(100svh-4rem)] items-center">
+    <section id="about" className="scroll-mt-16">
       <Container>
-        <SectionHeading eyebrow="About Me" title="Who I am" />
-        <div className="mx-auto max-w-2xl text-center text-gray-600 dark:text-gray-400">
+        <TwoToneHeading top="Who I" bottom="Am" />
+        <div className="max-w-2xl text-lg text-gray-600 sm:text-xl dark:text-gray-400">
           <p>
             Write a couple of paragraphs here about your background, what got you into
             development, and what you're passionate about building. Mention your experience,

@@ -5,11 +5,20 @@
 @theme {
   --color-background: #ffffff;
   --color-foreground: #333333;
+  --color-surface: #f7f7f7;
+  --color-accent: #000000;
+  --color-accent-foreground: #ffffff;
+  --font-sans:
+    'Inter', system-ui, -apple-system, 'Segoe UI', ui-sans-serif, Roboto, Helvetica, Arial,
+    sans-serif;
 }
 
 .dark {
-  --color-background: #121212;
-  --color-foreground: #e5e5e5;
+  --color-background: #0a0a0a;
+  --color-foreground: #ededed;
+  --color-surface: #141414;
+  --color-accent: #ffffff;
+  --color-accent-foreground: #000000;
 }
 
 :root {
@@ -18,6 +27,7 @@
 
 body {
   margin: 0;
+  font-family: var(--font-sans);
 }
 
 #root {
