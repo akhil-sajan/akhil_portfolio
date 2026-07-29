@@ -28,6 +28,7 @@
 body {
   margin: 0;
   font-family: var(--font-sans);
+  overflow-x: hidden;
 }
 
 #root {
