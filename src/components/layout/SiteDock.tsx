@@ -46,12 +46,22 @@ function BriefcaseIcon() {
   );
 }
 
+function MailIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path d="m4 7 8 6 8-6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 const NAV_ITEMS: DockItem[] = [
   { icon: <HomeIcon />, label: 'Home', href: '#top' },
   { icon: <UserIcon />, label: 'About', href: '#about' },
   { icon: <GridIcon />, label: 'Projects', href: '#projects' },
   { icon: <BriefcaseIcon />, label: 'Experience', href: '#experience' },
   { icon: <CodeIcon />, label: 'Tech Stack', href: '#tech-stack' },
+  { icon: <MailIcon />, label: 'Contact', href: '#contact' },
 ];
 
 export function SiteDock() {

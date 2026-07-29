@@ -1,20 +1,46 @@
 import { type FormEvent, useState } from 'react';
-import { socials } from '../../data/socials';
 import { Container } from '../ui/Container';
 import { TwoToneHeading } from '../ui/TwoToneHeading';
 
-const CONTACT_EMAIL = 'you@example.com';
+const WEB3FORMS_ACCESS_KEY = 'b66d9fab-2fb3-4686-8778-8e0fbecf7f67';
+
+type SubmitStatus = 'idle' | 'sending' | 'success' | 'error';
 
 export function Contact() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [status, setStatus] = useState<SubmitStatus>('idle');
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const subject = encodeURIComponent(`Portfolio message from ${name || 'a visitor'}`);
-    const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+    setStatus('sending');
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          name,
+          email,
+          message,
+          subject: `Portfolio message from ${name}`,
+        }),
+      });
+      const result = await response.json();
+
+      if (result.success) {
+        setStatus('success');
+        setName('');
+        setEmail('');
+        setMessage('');
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
   }
 
   return (
@@ -55,25 +81,23 @@ export function Contact() {
           />
           <button
             type="submit"
-            className="w-full rounded-xl bg-[var(--color-accent)] px-6 py-3 text-lg font-bold text-[var(--color-accent-foreground)] uppercase tracking-wide transition-colors hover:brightness-110"
+            disabled={status === 'sending'}
+            className="w-full rounded-xl bg-[var(--color-accent)] px-6 py-3 text-lg font-bold text-[var(--color-accent-foreground)] uppercase tracking-wide transition-colors hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60"
           >
-            Send message
+            {status === 'sending' ? 'Sending…' : 'Send message'}
           </button>
-        </form>
 
-        <div className="mt-8 flex gap-6">
-          {socials.map((social) => (
-            <a
-              key={social.label}
-              href={social.url}
-              target="_blank"
-              rel="noreferrer"
-              className="text-lg font-medium text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white"
-            >
-              {social.label}
-            </a>
-          ))}
-        </div>
+          {status === 'success' && (
+            <p className="text-sm font-medium text-green-600 dark:text-green-500">
+              Thanks! Your message has been sent — I'll get back to you soon.
+            </p>
+          )}
+          {status === 'error' && (
+            <p className="text-sm font-medium text-red-600 dark:text-red-500">
+              Something went wrong sending your message. Please try again.
+            </p>
+          )}
+        </form>
       </Container>
     </section>
   );

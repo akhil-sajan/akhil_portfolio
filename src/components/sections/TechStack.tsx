@@ -7,8 +7,8 @@ export function TechStack() {
     <section id="tech-stack" className="scroll-mt-16">
       <Container>
         <TwoToneHeading
-          top="Premium"
-          bottom="Tools"
+          top="Tech"
+          bottom="Stack"
           description="Tools and technologies I use regularly."
         />
         <div className="grid gap-x-12 gap-y-8 sm:grid-cols-2">

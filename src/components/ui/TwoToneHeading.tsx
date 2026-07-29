@@ -16,7 +16,7 @@ export function TwoToneHeading({ top, bottom, description, align = 'left' }: Two
       </p>
       {description && (
         <p
-          className={`mt-6 max-w-xl text-lg text-gray-600 sm:text-xl dark:text-gray-400 ${
+          className={`mt-6 max-w-2xl text-lg text-gray-600 sm:text-xl dark:text-gray-400 ${
             align === 'center' ? 'mx-auto' : ''
           }`}
         >

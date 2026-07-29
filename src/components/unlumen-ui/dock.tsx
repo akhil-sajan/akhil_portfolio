@@ -158,8 +158,10 @@ export function Dock({
   const mouseX = useMotionValue(Infinity);
   const dockRef = React.useRef<HTMLDivElement>(null);
 
-  const iconRefs = React.useRef<React.RefObject<HTMLDivElement | null>[]>(
-    items.map(() => React.createRef<HTMLDivElement>()),
+  const iconRefs = React.useMemo<React.RefObject<HTMLDivElement | null>[]>(
+    () => items.map(() => React.createRef<HTMLDivElement>()),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [items.length],
   );
 
   const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null);
@@ -171,7 +173,7 @@ export function Dock({
 
     let raf: number;
     const update = () => {
-      const iconEl = iconRefs.current[hoveredIndex]?.current;
+      const iconEl = iconRefs[hoveredIndex]?.current;
       const dockEl = dockRef.current;
       if (iconEl && dockEl) {
         const iconRect = iconEl.getBoundingClientRect();
@@ -191,10 +193,10 @@ export function Dock({
         setHoveredIndex(null);
         return;
       }
-      const idx = iconRefs.current.findIndex((r) => r === ref);
+      const idx = iconRefs.findIndex((r) => r === ref);
       setHoveredIndex(idx >= 0 ? idx : null);
     },
-    [],
+    [iconRefs],
   );
 
   return (
@@ -220,7 +222,7 @@ export function Dock({
             alwaysShowLabels={alwaysShowLabels}
             springOptions={springOptions}
             onHover={handleHover}
-            iconRef={iconRefs.current[i]}
+            iconRef={iconRefs[i]}
           />
           {item.separator && <DockSeparator />}
         </React.Fragment>

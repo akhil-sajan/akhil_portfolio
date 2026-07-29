@@ -1,4 +1,3 @@
-import { heroStats } from '../../data/hero';
 import { Container } from '../ui/Container';
 import { TwoToneHeading } from '../ui/TwoToneHeading';
 import { ProfileCard } from './ProfileCard';
@@ -16,21 +15,8 @@ export function Hero() {
           <TwoToneHeading
             top="Software"
             bottom="Engineer"
-            description="Passionate about creating intuitive and engaging user experiences. Specialize in transforming ideas into beautifully crafted products."
+            description="I'm a software engineer who enjoys building things end-to-end — from designing clean architecture to shipping features that actually work in production. I care about writing maintainable code, solving real problems, and constantly learning new tools and approaches along the way."
           />
-
-          <div className="mt-10 flex flex-wrap gap-8">
-            {heroStats.map((stat) => (
-              <div key={stat.label}>
-                <p className="text-5xl font-black text-black sm:text-6xl dark:text-white">
-                  {stat.value}
-                </p>
-                <p className="mt-1 text-sm leading-tight whitespace-pre-line text-gray-500 uppercase">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
-          </div>
         </div>
       </Container>
     </section>
